@@ -1,8 +1,10 @@
 pipeline {
     agent any
     tools { nodejs "nodejs"}
-    triggers {
-        cron('* * * * *')
+    parameters {
+        string(name: "REPO_OWNER", defaultValue: "Daisy", description: "The owner of the repository")
+        booleanParam(name: "ALLOW_BUILD", defaultValue: "true", description: "Is this job allowed to build?")
+        choice(name: "TARGET_ENV", choices: ['local, dev, test'], description: "Choose an environment to run pipeline")
     }
     stages {
         stage("Prepare") {
@@ -10,12 +12,15 @@ pipeline {
                 script {
                     env.GIT_SHOT = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
                     currentBuild.displayName = "#${env.BUILD_NUMBER}: ${env.GIT_SHOT}"
+                    echo "The owner of this repository is ${params.REPO_OWNER}"
+                    echo "Is this build allowed? Answer: ${params.ALLOW_BUILD}"
                 }
             }
         }
         stage("Build") {
             steps {
                 script {
+                    echo "Target environment: ${params.TARGET_ENV}"
                     sh(
                         label: "Install npm dependencies",
                         script: "npm install"
