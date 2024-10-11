@@ -4,7 +4,7 @@ pipeline {
     parameters {
         string(name: "REPO_OWNER", defaultValue: "Daisy", description: "The owner of the repository")
         booleanParam(name: "ALLOW_BUILD", defaultValue: "true", description: "Is this job allowed to build?")
-        choice(name: "TARGET_ENV", choices: ['local, dev, test'], description: "Choose an environment to run pipeline")
+        choice(name: "TARGET_ENV", choices: ['local', 'dev', 'test'], description: "Choose an environment to run pipeline")
     }
     stages {
         stage("Prepare") {
