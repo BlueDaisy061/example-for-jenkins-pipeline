@@ -5,7 +5,7 @@ pipeline {
     }
     stages {
         stage("Prepare") {
-            step {
+            steps {
                 script {
                     env.GIT_SHOT = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
                     currentBuild.displayName = "#${env.BUILD_NUMBER}: ${env.GIT_SHOT}"
@@ -13,7 +13,7 @@ pipeline {
             }
         }
         stage("Build") {
-            step {
+            steps {
                 script {
                     sh(
                         label: "Install npm dependencies",
