@@ -1,9 +1,6 @@
 pipeline {
     agent any
     tools { nodejs "nodejs"}
-    triggers {
-        cron('* * * * *')
-    }
     stages {
         stage("Prepare") {
             steps {
