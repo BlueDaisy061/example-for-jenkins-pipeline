@@ -1,5 +1,6 @@
 pipeline {
-    agent { node { label 'ci-executor'} }
+    agent any
+    tools { nodejs "nodejs" }
     triggers {
         githubPush()
     }
