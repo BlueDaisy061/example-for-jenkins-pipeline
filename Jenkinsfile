@@ -22,7 +22,7 @@ pipeline {
                     )
                     sh(
                         label: "Run buil",
-                        script: "npm build"
+                        script: "npm run build"
                     )
                 }
             }
