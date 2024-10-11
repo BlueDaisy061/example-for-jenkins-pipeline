@@ -24,6 +24,7 @@ pipeline {
                         label: "Run buil",
                         script: "npm run build"
                     )
+                    echo "Build done."
                 }
             }
         }
