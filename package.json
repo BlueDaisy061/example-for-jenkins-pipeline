@@ -1,0 +1,15 @@
+{
+  "name": "example-for-jenkins-pipeline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --detectOpenHandles --coverage",
+    "build": "echo \"Project was built\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
+}
