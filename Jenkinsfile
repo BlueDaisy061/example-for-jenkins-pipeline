@@ -27,7 +27,7 @@ pipeline {
             }
         }
         stage("Unit test") {
-            step {
+            steps {
                 script {
                     sh(
                         label: "Run unit tests",
